@@ -1,5 +1,5 @@
-From: ubuntu:bionic
 Bootstrap: docker
+From: ubuntu:bionic
 
 %help
 
