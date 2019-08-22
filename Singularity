@@ -2,14 +2,16 @@ From: ubuntu:bionic
 Bootstrap: docker
 
 %help
+
 trinity 2.6.6
 
 %labels
+
 MAINTAINER BioBox
 Version v1.0
 
 %environment
-%environment
+
   PATH=/usr/local/src/trinityrnaseq-Trinity-v2.6.6:$PATH
   PATH=/usr/local/src/trinityrnaseq-Trinity-v2.6.6/util:$PATH
   PATH=/usr/local/src/trinityrnaseq-Trinity-v2.6.6/Analysis/DifferentialExpression:$PATH
@@ -19,8 +21,13 @@ Version v1.0
   PATH=/usr/local/src/bowtie2-2.3.4.1-linux-x86_64:$PATH
   PATH=/usr/local/src/RSEM-1.3.0:$PATH
   export LC_ALL=C
+  
+%runscript
+    echo "Trinity"
+    exec echo "Test" "$@"
 
-%post  
+%post
+
   apt-get update && apt-get dist-upgrade -y && apt-get install wget zlib1g-dev build-essential samtools python zlib1g-dev unzip r-base r-base-core r-base-dev -y && rm -rf /var/lib/apt/lists/*
   mkdir -p /usr/local/src
   cd /usr/local/src && wget https://github.com/trinityrnaseq/trinityrnaseq/archive/Trinity-v2.6.6.tar.gz -O trinity.tar.gz && tar xf trinity.tar.gz && rm trinity.tar.gz && cd trinityrnaseq-Trinity-v2.6.6 && make -j 8
