@@ -20,10 +20,6 @@ Version v1.0
   PATH=/usr/local/src/RSEM-1.3.0:$PATH
   export LC_ALL=C
 
-%runscript
-echo "This gets run when you run the image!" 
-exec /bin/bash /code/rawr.sh "$@"  
-
 %post  
   apt-get update && apt-get dist-upgrade -y && apt-get install wget zlib1g-dev build-essential samtools python zlib1g-dev unzip r-base r-base-core r-base-dev -y && rm -rf /var/lib/apt/lists/*
   mkdir -p /usr/local/src
