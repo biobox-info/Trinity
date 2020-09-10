@@ -3,7 +3,7 @@ From: trinityrnaseq/trinityrnaseq
 
 %help
 
-trinity latest
+trinity 2.10.0
 
 %labels
 
